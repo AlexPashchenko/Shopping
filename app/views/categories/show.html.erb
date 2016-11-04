@@ -1,0 +1,11 @@
+<p>
+  <ul>
+  <li><%= @category.name %></li>
+  <% @category.products.each do|product| %>
+      <li><%=link_to "#{product.title}", product_path%>
+      <%= product.price %></li>
+  <% end %>
+  </ul>
+<%= link_to 'Back', root_path %>
+</p>
+

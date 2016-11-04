@@ -1,0 +1,59 @@
+<% unless user_signed_in? %>
+    <%= link_to 'Войти', new_user_session_path%>
+<%end%><p>
+  <strong>Title:</strong>
+  <%= @product.title %>
+</p>
+<p>
+   <%= image_tag @product.avatar %>
+</p>
+<p>
+  <strong>Body:</strong>
+  <%= @product.body %>
+</p>
+<p>
+  <strong>Price:</strong>
+  <%= @product.price %>
+</p>
+<%= rating_for @product %>
+<div>
+     <%= link_to 'Back', products_path %>
+</div>
+
+<% if can? :create, Message %>
+<p>
+     <%= form_for([@product, @product.messages.build]) do |f| %>
+      <%= f.text_field :text, placeholder: 'Add your message..' %>
+      <%= f.submit class: 'btn btn-primary' %>
+        <div id="flash">
+      <%=  flash[:notice]  %>
+        </div>
+    <% end %>
+  <% end %>
+</p>
+
+<table id='messages' class='table'>
+  <thead>
+  <th>
+    Name
+  </th>
+  <th>
+    Comment
+  </th>
+  <th>
+    Date
+  </th>
+
+  </thead>
+  <tbody>
+  <% @messages.each do |message| %>
+      <% next unless message.persisted? %>
+      <% unless message.status == "unapproved"%>
+      <td><%= message.user.email%></td>
+        <td><%= message.text %></td>
+        <% end %>
+  </tbody>
+  <% end %>
+
+</table>
+<%= will_paginate @messages %>

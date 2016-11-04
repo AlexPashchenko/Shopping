@@ -1,0 +1,18 @@
+<% unless user_signed_in? %>
+<%= link_to 'Войти', new_user_session_path%>
+<%end%>
+<p>Categories</p>
+  <ul style="list-style: none; ">
+<div>
+    <% @categories.each do |category| %>
+
+        <li><%= link_to "#{category.name}",  category %> </li>
+  <% end %>
+</div>
+
+    <div align="center">
+   <%= button_to 'All products ->', products_path , :method =>'get', class: 'btn btn-primary' %>
+    </div>
+  </ul>
+
+<br>

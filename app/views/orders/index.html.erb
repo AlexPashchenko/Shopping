@@ -1,0 +1,6 @@
+
+    <% current_user.orders.each do |order| %>
+        <h4><%= order.user.email %></h4>
+        <h4><%= order.total_price %></h4>
+        <%=link_to 'Show', order%>
+<% end %>

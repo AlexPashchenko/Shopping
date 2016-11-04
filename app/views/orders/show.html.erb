@@ -1,0 +1,12 @@
+<p>
+<%= @order.user.email %>
+</p>
+
+<p>
+  <strong>Sum:</strong>
+  <%= @order.total_price %>
+</p>
+
+<div>
+  <%= link_to 'Back', orders_path %>
+</div>

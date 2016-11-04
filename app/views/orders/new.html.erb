@@ -1,0 +1,17 @@
+<%= form_for([@order, @line_product]) do |f| %>
+<div class="field">
+  <%= f.label :sum %>
+  <%= f.text_field @order.total_price %>
+</div>
+
+<div class="field">
+  <%= f.label :product %>
+  <%= f.text_field :products %>
+</div>
+
+
+
+<div class="actions">
+  <%= f.submit %>
+</div>
+<% end %>
